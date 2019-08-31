@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+}
+
+.test {
+    @apply text-lg text-red-500;
+}
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;

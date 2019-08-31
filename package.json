@@ -1,0 +1,65 @@
+{
+  "name": "magnificiant-joe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "css-loader": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-mixins": "^6.2.2",
+    "postcss-nested": "^4.1.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-api-middleware": "^3.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "style-loader": "^1.0.0",
+    "tailwindcss": "^1.1.2",
+    "terser-webpack-plugin": "^1.4.1"
+  },
+  "scripts": {
+    "develop": "NODE_ENV=development webpack-dev-server --config=webpack.config.js --mode development --open --hot",
+    "build": "NODE_ENV=production webpack --config=webpack.config.js --mode production",
+    "precommit": "NODE_ENV=production lint-staged",
+    "fix-js": "eslint-auto-fix"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "pretty-quick --staged",
+      "eslint src/ --fix",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.6.1",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.2.1",
+    "eslint-auto-fix": "^1.0.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.3",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  }
+}
