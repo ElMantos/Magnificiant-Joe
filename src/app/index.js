@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react';
 
-import './style.css';
+import { Player } from './features';
 
 class App extends PureComponent {
   render() {
     return (
       <div>
-        <h1 className="test">DIY</h1>
-        <h2>App</h2>
-        <h4>PURE COMPONENT</h4>
+        <span>
+          <Player />
+        </span>
       </div>
     );
   }
