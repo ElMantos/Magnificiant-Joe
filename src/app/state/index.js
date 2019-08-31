@@ -1,2 +1,2 @@
-export { default as rootReducer } from './reducer';
-export { default as middlewares } from './middlewares';
+export { default as player } from './player';
+export { default as store } from './store';
