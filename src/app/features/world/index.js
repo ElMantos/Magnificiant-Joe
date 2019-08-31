@@ -5,7 +5,6 @@ import Player from '../player';
 import Map from '../map';
 
 function World() {
-  console.log(config);
   return (
     <div
       style={{

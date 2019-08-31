@@ -28,6 +28,7 @@ const handleMovement = playerComponent => {
       case 37:
         return induceMovement(player.constants.DIRECTIONS.west);
       default:
+        // eslint-disable-next-line no-console
         return console.warn(`Key ${event.keyCode} is not binded`);
     }
   };

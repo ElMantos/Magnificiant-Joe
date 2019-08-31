@@ -6,7 +6,6 @@ export const observeMovementBoundaries = (oldPos, newPos) => {
     newPos[0] >= 0 &&
     newPos[0] < constants.MAP_WIDTH &&
     (newPos[1] >= 0 && newPos[1] < constants.MAP_HEIGHT);
-  console.log(condition);
   return condition ? newPos : oldPos;
 };
 
