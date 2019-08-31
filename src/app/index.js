@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react';
 
-import { Player } from './features';
+import { World } from './features';
+
+import './style.css';
 
 class App extends PureComponent {
   render() {
     return (
       <div>
         <span>
-          <Player />
+          <World />
         </span>
       </div>
     );

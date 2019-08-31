@@ -27,7 +27,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(.png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         loader: 'file-loader',
         options: {
           name() {
@@ -62,7 +62,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      User: path.resolve(paths.SRC, 'app/state/user')
+      State: path.resolve(paths.SRC, 'app/state'),
+      Config: path.resolve(paths.SRC, 'app/config')
     }
   },
   optimization: {
