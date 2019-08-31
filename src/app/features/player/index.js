@@ -8,7 +8,6 @@ import handleMovement from './movement';
 import walkSprite from './assets/playerWalk.png';
 
 function Player({ playerPosition }) {
-  console.log(handleMovement);
   return (
     <div
       style={{

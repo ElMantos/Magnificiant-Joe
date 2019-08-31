@@ -1,20 +1,33 @@
 import { store, player } from 'State';
+import config from 'Config';
 
 const handleMovement = playerComponent => {
+  const induceMovement = direction => {
+    const oldPos = player.selectors.getPlayerPosition(store.getState());
+    store.dispatch(
+      player.actions.directionMove(
+        config.utils.observeMovementBoundaries(
+          oldPos,
+          config.utils.getNewPosition(direction, oldPos)
+        )
+      )
+    );
+  };
+
   const handleKeyDown = event => {
     event.preventDefault();
 
     switch (event.keyCode) {
       case 40:
-        return store.dispatch(player.actions.directionMove('SOUTH'));
+        return induceMovement('SOUTH');
       case 39:
-        return store.dispatch(player.actions.directionMove('EAST'));
+        return induceMovement('EAST');
       case 38:
-        return store.dispatch(player.actions.directionMove('NORTH'));
+        return induceMovement('NORTH');
       case 37:
-        return store.dispatch(player.actions.directionMove('WEST'));
+        return induceMovement('WEST');
       default:
-        return console.log(event.keyCode);
+        return console.warn(`Key ${event.keyCode} is not binded`);
     }
   };
   window.addEventListener('keydown', event => {

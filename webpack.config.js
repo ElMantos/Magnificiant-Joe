@@ -62,7 +62,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      State: path.resolve(paths.SRC, 'app/state')
+      State: path.resolve(paths.SRC, 'app/state'),
+      Config: path.resolve(paths.SRC, 'app/config')
     }
   },
   optimization: {
