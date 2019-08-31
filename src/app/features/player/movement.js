@@ -9,7 +9,8 @@ const handleMovement = playerComponent => {
         config.utils.observeMovementBoundaries(
           oldPos,
           config.utils.getNewPosition(direction, oldPos)
-        )
+        ),
+        direction
       )
     );
   };
@@ -19,13 +20,13 @@ const handleMovement = playerComponent => {
 
     switch (event.keyCode) {
       case 40:
-        return induceMovement('SOUTH');
+        return induceMovement(player.constants.DIRECTIONS.south);
       case 39:
-        return induceMovement('EAST');
+        return induceMovement(player.constants.DIRECTIONS.east);
       case 38:
-        return induceMovement('NORTH');
+        return induceMovement(player.constants.DIRECTIONS.north);
       case 37:
-        return induceMovement('WEST');
+        return induceMovement(player.constants.DIRECTIONS.west);
       default:
         return console.warn(`Key ${event.keyCode} is not binded`);
     }

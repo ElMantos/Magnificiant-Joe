@@ -1,9 +1,12 @@
 import * as actionTypes from './actionTypes';
 
-export const directionMove = newPosition => {
+export const directionMove = (newPosition, direction) => {
   console.log(newPosition);
   return {
     type: actionTypes.PLAYER_MOVE,
-    payload: newPosition
+    payload: {
+      position: newPosition,
+      direction
+    }
   };
 };
