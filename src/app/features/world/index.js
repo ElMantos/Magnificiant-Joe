@@ -3,6 +3,7 @@ import React from 'react';
 import config from 'Config';
 import Player from '../player';
 import Map from '../map';
+import { firstMap } from '../../data/maps';
 
 function World() {
   return (
@@ -14,7 +15,7 @@ function World() {
         margin: '10px auto'
       }}
     >
-      <Map />
+      <Map map={firstMap.tiles} className={firstMap.mapClass} />
       <Player />
     </div>
   );
