@@ -22,7 +22,9 @@ function BasicChest({ key, metadata }) {
 
 BasicChest.propTypes = {
   key: PropTypes.string,
-  metadata: PropTypes.shape({}).isRequired
+  metadata: PropTypes.shape({
+    isOpen: PropTypes.bool.isRequired
+  }).isRequired
 };
 
 export default BasicChest;

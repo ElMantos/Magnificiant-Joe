@@ -1,0 +1,12 @@
+.panel-item {
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+    margin-bottom: 5px;
+    margin-right: 6px;
+    display: inline-block;
+}
+
+.basic-sword {
+    background-image: url('../assets/weapons/basic-sword.png');
+}
