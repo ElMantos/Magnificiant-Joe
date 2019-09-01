@@ -1,5 +1,6 @@
 import { store, player, world } from 'State';
 import config from 'Config';
+import handleAction from './action';
 
 const handleMovement = playerComponent => {
   const induceMovement = direction => {
@@ -22,6 +23,8 @@ const handleMovement = playerComponent => {
     event.preventDefault();
 
     switch (event.keyCode) {
+      case 32:
+        return handleAction();
       case 40:
         return induceMovement(player.constants.DIRECTIONS.south);
       case 39:

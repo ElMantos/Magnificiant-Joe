@@ -1,4 +1,17 @@
 export const MAP_TILES = {
-  grass: 0,
-  basicTree: 500
+  grass: {
+    tile: 0
+  },
+  basicTree: {
+    tile: 500
+  },
+  basicRock: {
+    tile: 600
+  },
+  basicChest: {
+    tile: 1000,
+    metadata: {
+      isOpen: false
+    }
+  }
 };
