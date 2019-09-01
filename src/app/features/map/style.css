@@ -1,0 +1,22 @@
+.first-map {
+    background-image: url('./assets//ground/grass.jpg');
+    background-size: 80px 80px;
+    background-repeat: repeat;
+}
+
+.tile {
+    display: inline-flex;
+    background-size: cover;
+    background-position: center;
+}
+
+.grass {
+    background-image: url('./assets/ground/grass.jpg');
+}
+
+.basic-tree {
+    @apply grass;
+    background-position: cover, center;
+    background-repeat: repeat, no-repeat;
+    background-image: url('./assets/ground/basictree.jpg');
+}

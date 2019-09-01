@@ -1,7 +1,20 @@
 import { player } from 'State';
 import * as constants from './constants';
 
-export const observeMovementBoundaries = (oldPos, newPos) => {
+const observeImpassable = (newPos, tiles) => {
+  const y = newPos[0] / player.constants.SPRITE_SIZE;
+  const x = newPos[1] / player.constants.SPRITE_SIZE;
+  if (y < 0 || x < 0) {
+    return false;
+  }
+  const nextTile = tiles[x][y];
+  console.log(nextTile);
+  return nextTile >= 500;
+};
+
+export const observeMovementBoundaries = (oldPos, newPos, tiles) => {
+  if (observeImpassable(newPos, tiles)) return oldPos;
+
   const condition =
     newPos[0] >= 0 &&
     newPos[0] < constants.MAP_WIDTH &&

@@ -1,14 +1,17 @@
-import { store, player } from 'State';
+import { store, player, world } from 'State';
 import config from 'Config';
 
 const handleMovement = playerComponent => {
   const induceMovement = direction => {
-    const oldPos = player.selectors.getPlayerPosition(store.getState());
+    const state = store.getState();
+    const oldPos = player.selectors.getPlayerPosition(state);
+    const tiles = world.selectors.getTiles(state);
     store.dispatch(
       player.actions.directionMove(
         config.utils.observeMovementBoundaries(
           oldPos,
-          config.utils.getNewPosition(direction, oldPos)
+          config.utils.getNewPosition(direction, oldPos),
+          tiles
         ),
         direction
       )
