@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
+import { world } from 'State';
 import config from 'Config';
 import Player from '../player';
 import Map from '../map';
 import { firstMap } from '../../data/maps';
 
-function World() {
+function World({ addWorldTiles }) {
+  useEffect(() => {
+    addWorldTiles(firstMap);
+  });
   return (
     <div
       style={{
@@ -21,4 +27,15 @@ function World() {
   );
 }
 
-export default World;
+World.propTypes = {
+  addWorldTiles: PropTypes.func.isRequired
+};
+
+const enhance = connect(
+  null,
+  dispatch => ({
+    addWorldTiles: tiles => dispatch(world.actions.addTiles(tiles))
+  })
+);
+
+export default enhance(World);

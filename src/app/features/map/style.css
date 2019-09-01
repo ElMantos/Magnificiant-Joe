@@ -14,9 +14,10 @@
     background-image: url('./assets/ground/grass.jpg');
 }
 
+.basic-rock {
+    background-image: url('./assets/ground/basicrock.png');
+}
+
 .basic-tree {
-    @apply grass;
-    background-position: cover, center;
-    background-repeat: repeat, no-repeat;
-    background-image: url('./assets/ground/basictree.jpg');
+    background-image: url('./assets/ground/basictree.png');
 }

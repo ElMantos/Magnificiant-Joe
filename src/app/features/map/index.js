@@ -1,28 +1,35 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { connect } from 'react-redux';
 
 import { player, world } from 'State';
 import { MAP_TILES } from './constants';
+import { BasicChest } from './components';
 
 import './style.css';
 
-function getSpriteTile(type) {
-  switch (type) {
-    case MAP_TILES.basicTree:
-      return 'basic-tree';
-    case MAP_TILES.grass:
-      return '';
+function getSpriteTile(item, key) {
+  const { tile } = item;
+
+  switch (tile) {
+    case MAP_TILES.basicChest.tile:
+      return <BasicChest metadata={item.metadata} key={key} />;
+    case MAP_TILES.basicRock.tile:
+      return <MapTile key={key} className="tile basic-rock" />;
+    case MAP_TILES.basicTree.tile:
+      return <MapTile key={key} className="tile basic-tree" />;
+    case MAP_TILES.grass.tile:
+      return <MapTile key={key} />;
     default:
-      return '';
+      return <MapTile key={key} />;
   }
 }
 
-function MapTile({ value }) {
+function MapTile({ className }) {
   return (
     <div
-      className={cx('tile', getSpriteTile(value))}
+      className={cx('tile', className)}
       style={{
         width: player.constants.SPRITE_SIZE,
         height: player.constants.SPRITE_SIZE
@@ -32,28 +39,26 @@ function MapTile({ value }) {
 }
 
 MapTile.propTypes = {
-  value: PropTypes.number.isRequired
+  className: PropTypes.string
 };
 
 function MapRow({ tiles }) {
   return (
-    <div className="flex flex-row">
-      {tiles.map((tile, key) => (
-        <MapTile key={`tile-${key}`} value={tile} />
-      ))}
+    <div className="flex flex-row first-map">
+      {tiles.map((item, key) => getSpriteTile(item, key))}
     </div>
   );
 }
 
 MapRow.propTypes = {
-  tiles: PropTypes.arrayOf(PropTypes.number).isRequired
+  tiles: PropTypes.arrayOf(PropTypes.shape).isRequired
 };
 
-function Map({ map, className, addWorldTiles }) {
-  useEffect(() => {
-    addWorldTiles(map);
-  });
-
+function Map({ worldTile, className }) {
+  console.log(worldTile);
+  if (!worldTile.tiles.length) {
+    return <span>Loading</span>;
+  }
   return (
     <div
       className={cx('w-full h-full flex flex-col', className)}
@@ -61,7 +66,7 @@ function Map({ map, className, addWorldTiles }) {
         border: '4px solid lightgrey'
       }}
     >
-      {map.map((row, key) => (
+      {worldTile.tiles.map((row, key) => (
         <MapRow key={`row-${key}`} tiles={row} />
       ))}
     </div>
@@ -69,16 +74,12 @@ function Map({ map, className, addWorldTiles }) {
 }
 
 Map.propTypes = {
-  map: PropTypes.arrayOf(PropTypes.array).isRequired,
-  className: PropTypes.string.isRequired,
-  addWorldTiles: PropTypes.func.isRequired
+  worldTile: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  className: PropTypes.string.isRequired
 };
 
-const enhance = connect(
-  null,
-  dispatch => ({
-    addWorldTiles: tiles => dispatch(world.actions.addTiles(tiles))
-  })
-);
+const enhance = connect(state => ({
+  worldTile: world.selectors.getTiles(state)
+}));
 
 export default enhance(Map);

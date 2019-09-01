@@ -1,0 +1,7 @@
+.basic-chest {
+    background-image: url('../../assets/collectables/basic_chest.png');
+}
+
+.basic-chest-open {
+    background-image: url('../../assets/collectables/basic_chest-open.png');
+}
